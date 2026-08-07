@@ -1,0 +1,469 @@
+[
+  {
+    "key": "map_satellite_full",
+    "file": "map_satellite_full.jpg",
+    "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=126.294%2C33.414%2C126.322%2C33.454&bboxSR=4326&imageSR=4326&size=2400%2C3000&dpi=200&format=jpg&f=image",
+    "source": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export",
+    "note": "실제 위성영상 - 금성리 전체와 주변",
+    "width": 2400,
+    "height": 3000,
+    "status": "ok"
+  },
+  {
+    "key": "map_satellite_coast",
+    "file": "map_satellite_coast.jpg",
+    "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=126.2935%2C33.4395%2C126.313%2C33.452&bboxSR=4326&imageSR=4326&size=2800%2C1900&dpi=200&format=jpg&f=image",
+    "source": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export",
+    "note": "실제 위성영상 - 해안 생활권",
+    "width": 2800,
+    "height": 1900,
+    "status": "ok"
+  },
+  {
+    "key": "map_satellite_port",
+    "source": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export",
+    "note": "실제 위성영상 - 금성포구와 금성천 하구",
+    "status": "failed",
+    "error": "HTTPError('500 Server Error:  for url: https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=126.2945%2C33.4435%2C126.304%2C33.4505&bboxSR=4326&imageSR=4326&size=2600%2C1900&dpi=200&format=jpg&f=image')"
+  },
+  {
+    "key": "map_street_coast",
+    "source": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/export",
+    "note": "실제 도로지도 - 해안 생활권",
+    "status": "failed",
+    "error": "HTTPError('500 Server Error:  for url: https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/export?bbox=126.2935%2C33.4395%2C126.313%2C33.452&bboxSR=4326&imageSR=4326&size=2800%2C1900&dpi=200&format=jpg&f=image')"
+  },
+  {
+    "key": "map_topo_context",
+    "source": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/export",
+    "note": "지형도 - 귀덕·금성·곽지 관계",
+    "status": "failed",
+    "error": "HTTPError('500 Server Error:  for url: https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/export?bbox=126.275%2C33.405%2C126.335%2C33.468&bboxSR=4326&imageSR=4326&size=2600%2C2500&dpi=200&format=jpg&f=image')"
+  },
+  {
+    "key": "port_01",
+    "file": "port_01.jpg",
+    "url": "https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/5944c57c-f187-4c78-a255-13c0864d3352.webp",
+    "source": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021517",
+    "note": "비짓제주 금성포구 실제 사진",
+    "width": 1920,
+    "height": 560,
+    "status": "ok"
+  },
+  {
+    "key": "port_02",
+    "file": "port_02.jpg",
+    "url": "https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/cabfb895-21bf-46a4-9b9f-d6e0dac22198.webp",
+    "source": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021517",
+    "note": "비짓제주 금성포구 실제 사진",
+    "width": 1242,
+    "height": 900,
+    "status": "ok"
+  },
+  {
+    "key": "port_03",
+    "file": "port_03.jpg",
+    "url": "https://api.cdn.visitjeju.net/photomng/imgpath/201908/23/e40ab98c-bb6a-4867-95a7-251747f08fe9.webp",
+    "source": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021517",
+    "note": "비짓제주 금성포구 실제 사진",
+    "width": 1160,
+    "height": 500,
+    "status": "ok"
+  },
+  {
+    "key": "port_04",
+    "file": "port_04.jpg",
+    "url": "https://api.cdn.visitjeju.net/photomng/imgpath/201908/23/3a387c3a-1df2-45e0-bc03-5607ced3ea34.webp",
+    "source": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021517",
+    "note": "비짓제주 금성포구 실제 사진",
+    "width": 1160,
+    "height": 500,
+    "status": "ok"
+  },
+  {
+    "key": "port_05",
+    "file": "port_05.jpg",
+    "url": "https://api.cdn.visitjeju.net/photomng/imgpath/201908/23/8a0bad16-0630-4457-8f71-39e3adf6e9a7.webp",
+    "source": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021517",
+    "note": "비짓제주 금성포구 실제 사진",
+    "width": 1920,
+    "height": 1280,
+    "status": "ok"
+  },
+  {
+    "key": "excavation_01",
+    "file": "excavation_01.jpg",
+    "url": "https://img7.yna.co.kr/photo/yna/YH/2011/05/04/PYH2011050410600005600_P4.jpg",
+    "source": "https://www.yna.co.kr/view/AKR20110504170100056",
+    "note": "연합뉴스 금성리 발굴 보도사진",
+    "width": 1024,
+    "height": 949,
+    "status": "ok"
+  },
+  {
+    "key": "excavation_02",
+    "file": "excavation_02.jpg",
+    "url": "https://img1.yna.co.kr/photo/yna/YH/2011/05/04/PYH2011050410620005600_P4.jpg",
+    "source": "https://www.yna.co.kr/view/AKR20110504170100056",
+    "note": "연합뉴스 금성리 발굴 보도사진",
+    "width": 1024,
+    "height": 695,
+    "status": "ok"
+  },
+  {
+    "key": "excavation_03",
+    "file": "excavation_03.jpg",
+    "url": "https://img0.yna.co.kr/photo/yna/YH/2011/05/04/PYH2011050410520005600_P4.jpg",
+    "source": "https://www.yna.co.kr/view/AKR20110504170100056",
+    "note": "연합뉴스 금성리 발굴 보도사진",
+    "width": 1024,
+    "height": 683,
+    "status": "ok"
+  },
+  {
+    "key": "old_church",
+    "file": "old_church.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369600/image.jpg",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "옛 금성교회 관련 보도사진",
+    "width": 501,
+    "height": 668,
+    "status": "ok"
+  },
+  {
+    "key": "jejusori_2024_001",
+    "file": "jejusori_2024_001.jpg",
+    "url": "https://cdn.jejusori.net/news/photo/202408/429001_449666_451.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "width": 1280,
+    "height": 718,
+    "status": "ok"
+  },
+  {
+    "key": "jejusori_2024_002",
+    "url": "https://cdn.jejusori.net/image/logo/toplogo_20260127021036.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (283, 48)')"
+  },
+  {
+    "key": "jejusori_2024_003",
+    "url": "https://cdn.jejusori.net/image/logo/printlogo_20260113035708.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (130, 17)')"
+  },
+  {
+    "key": "jejusori_2024_004",
+    "file": "jejusori_2024_004.jpg",
+    "url": "https://cdn.jejusori.net/news/photo/202408/429001_449663_2259.jpg",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "width": 1280,
+    "height": 708,
+    "status": "ok"
+  },
+  {
+    "key": "jejusori_2024_005",
+    "file": "jejusori_2024_005.jpg",
+    "url": "https://cdn.jejusori.net/news/photo/202408/429001_449665_243.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "width": 1280,
+    "height": 711,
+    "status": "ok"
+  },
+  {
+    "key": "jejusori_2024_006",
+    "file": "jejusori_2024_006.jpg",
+    "url": "https://cdn.jejusori.net/news/photo/202408/429001_449667_79.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "width": 1280,
+    "height": 720,
+    "status": "ok"
+  },
+  {
+    "key": "jejusori_2024_007",
+    "url": "https://cdn.jejusori.net/news/photo/202408/429001_449669_2446.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (200, 275)')"
+  },
+  {
+    "key": "jejusori_2024_008",
+    "url": "https://cdn.jejusori.net/news/photo/member/moonsoyo_20221207052059.jpg",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (100, 88)')"
+  },
+  {
+    "key": "jejusori_2024_009",
+    "url": "https://cdn.jejusori.net/image/logo/downlogo_20260113035708.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (165, 28)')"
+  },
+  {
+    "key": "jejusori_2024_010",
+    "url": "https://cdn.jejusori.net/image/ndsoft.svg",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "UnidentifiedImageError('cannot identify image file <_io.BytesIO object at 0x7f6da23e0b80>')"
+  },
+  {
+    "key": "jejusori_2024_011",
+    "url": "https://cdn.jejusori.net/image/outlinks-1.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (95, 24)')"
+  },
+  {
+    "key": "jejusori_2024_012",
+    "url": "https://cdn.jejusori.net/image/outlinks-2.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (95, 26)')"
+  },
+  {
+    "key": "jejusori_2024_013",
+    "url": "https://cdn.jejusori.net/image/outlinks-3.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (100, 16)')"
+  },
+  {
+    "key": "jejusori_2024_014",
+    "url": "https://cdn.jejusori.net/image/outlinks-4.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (95, 18)')"
+  },
+  {
+    "key": "jejusori_2024_015",
+    "url": "https://cdn.jejusori.net/image/outlinks-5.png",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=429001",
+    "note": "https://www.jejusori.net/news/articleView.html?idxno=429001에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (240, 60)')"
+  },
+  {
+    "key": "sceneofjeju_001",
+    "file": "sceneofjeju_001.jpg",
+    "url": "https://cdn.imweb.me/upload/S2017072459759958d2781/d47cb817e1db2.png",
+    "source": "https://workshop.town/sceneofjeju",
+    "note": "https://workshop.town/sceneofjeju에서 확인한 편집용 실제 이미지",
+    "width": 606,
+    "height": 500,
+    "status": "ok"
+  },
+  {
+    "key": "sceneofjeju_002",
+    "url": "https://www.facebook.com/tr?id=355618153933779&ev=PageView&noscript=1&dpo=",
+    "source": "https://workshop.town/sceneofjeju",
+    "note": "https://workshop.town/sceneofjeju에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "UnidentifiedImageError('cannot identify image file <_io.BytesIO object at 0x7f6da36c57b0>')"
+  },
+  {
+    "key": "sceneofjeju_003",
+    "url": "https://workshop.town/common/img/default_profile.png",
+    "source": "https://workshop.town/sceneofjeju",
+    "note": "https://workshop.town/sceneofjeju에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (200, 200)')"
+  },
+  {
+    "key": "sceneofjeju_004",
+    "file": "sceneofjeju_004.jpg",
+    "url": "https://cdn.imweb.me/thumbnail/20250205/e9f1439f391a9.png",
+    "source": "https://workshop.town/sceneofjeju",
+    "note": "https://workshop.town/sceneofjeju에서 확인한 편집용 실제 이미지",
+    "width": 1280,
+    "height": 1216,
+    "status": "ok"
+  },
+  {
+    "key": "sceneofjeju_005",
+    "file": "sceneofjeju_005.jpg",
+    "url": "https://cdn.imweb.me/thumbnail/20250108/53429b1f41118.png",
+    "source": "https://workshop.town/sceneofjeju",
+    "note": "https://workshop.town/sceneofjeju에서 확인한 편집용 실제 이미지",
+    "width": 1920,
+    "height": 1281,
+    "status": "ok"
+  },
+  {
+    "key": "sceneofjeju_006",
+    "url": "https://cdn.imweb.me/thumbnail/20250108/4496c27bb950d.png",
+    "source": "https://workshop.town/sceneofjeju",
+    "note": "https://workshop.town/sceneofjeju에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (1300, 217)')"
+  },
+  {
+    "key": "sceneofjeju_007",
+    "file": "sceneofjeju_007.jpg",
+    "url": "https://cdn.imweb.me/thumbnail/20250108/ff2215248b176.jpg",
+    "source": "https://workshop.town/sceneofjeju",
+    "note": "https://workshop.town/sceneofjeju에서 확인한 편집용 실제 이미지",
+    "width": 1920,
+    "height": 1280,
+    "status": "ok"
+  },
+  {
+    "key": "sceneofjeju_008",
+    "url": "https://cdn.imweb.me/thumbnail/20241118/3b3996b699c7d.png",
+    "source": "https://workshop.town/sceneofjeju",
+    "note": "https://workshop.town/sceneofjeju에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "ValueError('too small (259, 129)')"
+  },
+  {
+    "key": "jst_galot",
+    "source": "https://www.jst.re.kr/galot/archiveList.do?cid=2102&curPage=19",
+    "status": "page_failed",
+    "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='www.jst.re.kr', port=443): Max retries exceeded with url: /galot/archiveList.do?cid=2102&curPage=19 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f6da23c93d0>, 'Connection to www.jst.re.kr timed out. (connect timeout=75)'))\"))"
+  },
+  {
+    "key": "jst_detail",
+    "source": "https://www.jst.re.kr/jejustudiesDetail.do?cid=060100&mid=RC00095664",
+    "status": "page_failed",
+    "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='www.jst.re.kr', port=443): Max retries exceeded with url: /jejustudiesDetail.do?cid=060100&mid=RC00095664 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f6da23c9a60>, 'Connection to www.jst.re.kr timed out. (connect timeout=75)'))\"))"
+  },
+  {
+    "key": "christiantoday_001",
+    "file": "christiantoday_001.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369600/image.jpg",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 501,
+    "height": 668,
+    "status": "ok"
+  },
+  {
+    "key": "christiantoday_002",
+    "url": "https://www.christiantoday.co.kr/assets2024/img/icon/nav.svg",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "UnidentifiedImageError('cannot identify image file <_io.BytesIO object at 0x7f6da2d9fdd0>')"
+  },
+  {
+    "key": "christiantoday_003",
+    "url": "https://www.christiantoday.co.kr/assets/images/logo.svg",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "UnidentifiedImageError('cannot identify image file <_io.BytesIO object at 0x7f6da2dc0e00>')"
+  },
+  {
+    "key": "christiantoday_004",
+    "url": "https://www.christiantoday.co.kr/assets2024/img/icon/search.svg",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "status": "failed",
+    "error": "UnidentifiedImageError('cannot identify image file <_io.BytesIO object at 0x7f6da1eaff10>')"
+  },
+  {
+    "key": "christiantoday_005",
+    "file": "christiantoday_005.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369603/2019.jpg",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 800,
+    "height": 450,
+    "status": "ok"
+  },
+  {
+    "key": "christiantoday_006",
+    "file": "christiantoday_006.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369603/2019.jpg?w=400",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 400,
+    "height": 225,
+    "status": "ok"
+  },
+  {
+    "key": "christiantoday_007",
+    "file": "christiantoday_007.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369602/2019.jpg",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 800,
+    "height": 450,
+    "status": "ok"
+  },
+  {
+    "key": "christiantoday_008",
+    "file": "christiantoday_008.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369602/2019.jpg?w=400",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 400,
+    "height": 225,
+    "status": "ok"
+  },
+  {
+    "key": "christiantoday_009",
+    "file": "christiantoday_009.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369601/image.jpg",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 960,
+    "height": 720,
+    "status": "ok"
+  },
+  {
+    "key": "christiantoday_010",
+    "file": "christiantoday_010.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369601/image.jpg?w=400",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 400,
+    "height": 300,
+    "status": "ok"
+  },
+  {
+    "key": "christiantoday_011",
+    "file": "christiantoday_011.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369600/image.jpg?w=400",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 400,
+    "height": 533,
+    "status": "ok"
+  },
+  {
+    "key": "christiantoday_012",
+    "file": "christiantoday_012.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369610/image.jpg",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 550,
+    "height": 654,
+    "status": "ok"
+  },
+  {
+    "key": "christiantoday_013",
+    "file": "christiantoday_013.jpg",
+    "url": "https://images.christiantoday.co.kr/data/images/full/369610/image.jpg?w=400",
+    "source": "https://www.christiantoday.co.kr/news/364110",
+    "note": "https://www.christiantoday.co.kr/news/364110에서 확인한 편집용 실제 이미지",
+    "width": 400,
+    "height": 476,
+    "status": "ok"
+  }
+]
