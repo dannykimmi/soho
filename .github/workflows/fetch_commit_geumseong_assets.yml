@@ -1,0 +1,136 @@
+name: Fetch and Commit Geumseong Assets
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fetch_commit_geumseong_assets.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pillow beautifulsoup4
+
+      - name: Fetch maps and photographs
+        run: |
+          cat > /tmp/fetch.py <<'PY'
+          import io, json, re, shutil
+          from pathlib import Path
+          from urllib.parse import urljoin
+          import requests
+          from bs4 import BeautifulSoup
+          from PIL import Image
+
+          OUT=Path('public/geumseong-assets')
+          shutil.rmtree(OUT,ignore_errors=True)
+          OUT.mkdir(parents=True)
+          S=requests.Session()
+          S.headers.update({'User-Agent':'Mozilla/5.0 Chrome/125 Safari/537.36','Accept-Language':'ko-KR,ko;q=0.9,en;q=0.7'})
+          records=[]
+
+          def image(key,url,source='',note=''):
+              try:
+                  r=S.get(url,headers={'Referer':source} if source else {},timeout=75,allow_redirects=True)
+                  r.raise_for_status()
+                  im=Image.open(io.BytesIO(r.content)); im.load()
+                  if im.width<320 or im.height<220: raise ValueError(f'too small {im.size}')
+                  p=OUT/f'{key}.jpg'; im.convert('RGB').save(p,quality=94,optimize=True,progressive=True)
+                  records.append({'key':key,'file':p.name,'url':url,'source':source,'note':note,'width':im.width,'height':im.height,'status':'ok'})
+                  print('OK',key,im.size)
+                  return True
+              except Exception as e:
+                  records.append({'key':key,'url':url,'source':source,'note':note,'status':'failed','error':repr(e)})
+                  print('FAIL',key,repr(e)); return False
+
+          def esri(key,service,bbox,size,note):
+              base=f'https://server.arcgisonline.com/ArcGIS/rest/services/{service}/MapServer/export'
+              params={'bbox':','.join(map(str,bbox)),'bboxSR':4326,'imageSR':4326,'size':f'{size[0]},{size[1]}','dpi':200,'format':'jpg','f':'image'}
+              try:
+                  r=S.get(base,params=params,timeout=100); r.raise_for_status()
+                  im=Image.open(io.BytesIO(r.content)); im.load()
+                  p=OUT/f'{key}.jpg'; im.convert('RGB').save(p,quality=95,optimize=True,progressive=True)
+                  records.append({'key':key,'file':p.name,'url':r.url,'source':base,'note':note,'width':im.width,'height':im.height,'status':'ok'})
+                  print('OK MAP',key,im.size)
+              except Exception as e:
+                  records.append({'key':key,'source':base,'note':note,'status':'failed','error':repr(e)}); print('FAIL MAP',key,repr(e))
+
+          esri('map_satellite_full','World_Imagery',[126.294,33.414,126.322,33.454],(2400,3000),'실제 위성영상 - 금성리 전체와 주변')
+          esri('map_satellite_coast','World_Imagery',[126.2935,33.4395,126.313,33.452],(2800,1900),'실제 위성영상 - 해안 생활권')
+          esri('map_satellite_port','World_Imagery',[126.2945,33.4435,126.304,33.4505],(2600,1900),'실제 위성영상 - 금성포구와 금성천 하구')
+          esri('map_street_coast','World_Street_Map',[126.2935,33.4395,126.313,33.452],(2800,1900),'실제 도로지도 - 해안 생활권')
+          esri('map_topo_context','World_Topo_Map',[126.275,33.405,126.335,33.468],(2600,2500),'지형도 - 귀덕·금성·곽지 관계')
+
+          visit='https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021517'
+          ports=[
+            'https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/5944c57c-f187-4c78-a255-13c0864d3352.webp',
+            'https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/cabfb895-21bf-46a4-9b9f-d6e0dac22198.webp',
+            'https://api.cdn.visitjeju.net/photomng/imgpath/201908/23/e40ab98c-bb6a-4867-95a7-251747f08fe9.webp',
+            'https://api.cdn.visitjeju.net/photomng/imgpath/201908/23/3a387c3a-1df2-45e0-bc03-5607ced3ea34.webp',
+            'https://api.cdn.visitjeju.net/photomng/imgpath/201908/23/8a0bad16-0630-4457-8f71-39e3adf6e9a7.webp']
+          for i,u in enumerate(ports,1): image(f'port_{i:02d}',u,visit,'비짓제주 금성포구 실제 사진')
+
+          yna='https://www.yna.co.kr/view/AKR20110504170100056'
+          excav=[
+            'https://img7.yna.co.kr/photo/yna/YH/2011/05/04/PYH2011050410600005600_P4.jpg',
+            'https://img1.yna.co.kr/photo/yna/YH/2011/05/04/PYH2011050410620005600_P4.jpg',
+            'https://img0.yna.co.kr/photo/yna/YH/2011/05/04/PYH2011050410520005600_P4.jpg']
+          for i,u in enumerate(excav,1): image(f'excavation_{i:02d}',u,yna,'연합뉴스 금성리 발굴 보도사진')
+          image('old_church','https://images.christiantoday.co.kr/data/images/full/369600/image.jpg','https://www.christiantoday.co.kr/news/364110','옛 금성교회 관련 보도사진')
+
+          def crawl(prefix,page,limit=12):
+              try:
+                  r=S.get(page,timeout=75); r.raise_for_status(); soup=BeautifulSoup(r.text,'html.parser')
+                  urls=[]
+                  for m in soup.select('meta[property="og:image"],meta[name="twitter:image"]'):
+                      if m.get('content'): urls.append(urljoin(r.url,m['content']))
+                  for tag in soup.find_all(['img','source']):
+                      for a in ('src','data-src','data-original','data-lazy-src','srcset'):
+                          v=tag.get(a)
+                          if not v: continue
+                          for part in str(v).split(','):
+                              u=urljoin(r.url,part.strip().split(' ')[0])
+                              if not u.startswith('data:'): urls.append(u)
+                  seen=[]
+                  for u in urls:
+                      if u not in seen: seen.append(u)
+                  n=0
+                  for idx,u in enumerate(seen,1):
+                      if image(f'{prefix}_{idx:03d}',u,page,f'{page}에서 확인한 편집용 실제 이미지'):
+                          n+=1
+                      if n>=limit: break
+                  print('CRAWLED',prefix,n)
+              except Exception as e:
+                  records.append({'key':prefix,'source':page,'status':'page_failed','error':repr(e)}); print('PAGE FAIL',prefix,repr(e))
+
+          crawl('jejusori_2024','https://www.jejusori.net/news/articleView.html?idxno=429001',18)
+          crawl('sceneofjeju','https://workshop.town/sceneofjeju',18)
+          crawl('jst_galot','https://www.jst.re.kr/galot/archiveList.do?cid=2102&curPage=19',18)
+          crawl('jst_detail','https://www.jst.re.kr/jejustudiesDetail.do?cid=060100&mid=RC00095664',18)
+          crawl('christiantoday','https://www.christiantoday.co.kr/news/364110',10)
+
+          (OUT/'manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+          ok=sum(x.get('status')=='ok' for x in records)
+          (OUT/'STATUS.txt').write_text(f'OK={ok}\nTOTAL={len(records)}\n',encoding='utf-8')
+          print('DONE',ok,len(records))
+          if ok<8: raise SystemExit('not enough downloadable assets')
+          PY
+          python /tmp/fetch.py
+
+      - name: Commit downloaded assets
+        run: |
+          git config user.name 'geumseong-archive-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add public/geumseong-assets
+          git diff --cached --quiet && exit 0
+          git commit -m 'Add fetched Geumseong archive maps and reference images'
+          git push
