@@ -1,0 +1,49 @@
+name: Fetch Geumseong Extra Maps
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fetch_geumseong_extra_maps.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  maps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install requests pillow
+      - name: Fetch smaller map exports
+        run: |
+          cat > /tmp/maps.py <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import io, requests
+          out=Path('public/geumseong-assets'); out.mkdir(parents=True,exist_ok=True)
+          s=requests.Session(); s.headers['User-Agent']='Mozilla/5.0'
+          jobs=[
+            ('map_jeju_street.jpg','World_Street_Map',[126.00,33.08,127.02,33.65],(1600,900)),
+            ('map_jeju_topo.jpg','World_Topo_Map',[126.00,33.08,127.02,33.65],(1600,900)),
+            ('map_coast_street.jpg','World_Street_Map',[126.2935,33.4395,126.313,33.452],(1600,1000)),
+            ('map_port_close.jpg','World_Imagery',[126.2945,33.4435,126.304,33.4505],(1600,1100)),
+            ('map_west_context.jpg','World_Street_Map',[126.20,33.35,126.40,33.52],(1600,1200)),
+          ]
+          base='https://server.arcgisonline.com/ArcGIS/rest/services/{}/MapServer/export'
+          ok=[]
+          for fn,service,bbox,size in jobs:
+            r=s.get(base.format(service),params={'bbox':','.join(map(str,bbox)),'bboxSR':4326,'imageSR':4326,'size':f'{size[0]},{size[1]}','dpi':150,'format':'jpg','f':'image'},timeout=90)
+            print(fn,r.status_code,len(r.content),r.url)
+            r.raise_for_status(); im=Image.open(io.BytesIO(r.content)); im.load(); im.convert('RGB').save(out/fn,quality=94,optimize=True,progressive=True); ok.append(fn)
+          (out/'EXTRA_MAPS.txt').write_text('\n'.join(ok)+'\n',encoding='utf-8')
+          PY
+          python /tmp/maps.py
+      - name: Commit maps
+        run: |
+          git config user.name geumseong-archive-bot
+          git config user.email actions@users.noreply.github.com
+          git add public/geumseong-assets
+          git diff --cached --quiet && exit 0
+          git commit -m 'Add extra Geumseong map exports'
+          git push
