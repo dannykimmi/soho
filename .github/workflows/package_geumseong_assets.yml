@@ -1,0 +1,50 @@
+name: Package Geumseong Assets
+
+on:
+  push:
+    paths:
+      - '.github/workflows/package_geumseong_assets.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  ASSET_DIR: public/geumseong-assets
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Record run ID and make archive
+        run: |
+          printf '%s\n' "$GITHUB_RUN_ID" > "$ASSET_DIR/RUN_ID.txt"
+          printf '%s\n' "$GITHUB_SHA" > "$ASSET_DIR/PACKAGE_SOURCE_SHA.txt"
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          root=Path('public/geumseong-assets')
+          with zipfile.ZipFile('geumseong-assets.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for p in sorted(root.rglob('*')):
+                  if p.is_file(): z.write(p,p.relative_to(root.parent))
+          print('archive bytes',Path('geumseong-assets.zip').stat().st_size)
+          PY
+
+      - name: Upload archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: geumseong-assets-package
+          path: geumseong-assets.zip
+          retention-days: 7
+          if-no-files-found: error
+
+      - name: Commit run metadata
+        run: |
+          git config user.name 'geumseong-archive-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$ASSET_DIR/RUN_ID.txt" "$ASSET_DIR/PACKAGE_SOURCE_SHA.txt"
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record Geumseong asset package workflow run'
+          git push
