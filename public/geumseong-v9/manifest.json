@@ -1,0 +1,101 @@
+[
+  {
+    "key": "water_carrier_jibs",
+    "file": "water_carrier_jibs.jpg",
+    "url": "https://www.jibs.co.kr/image/common/2022/12/09/20221209160750271djPIalUXwT.jpg",
+    "final_url": "https://www.jibs.co.kr/image/common/2022/12/09/20221209160750271djPIalUXwT.jpg",
+    "source": "https://www.jibs.co.kr/news/articles/articlesDetail/27104",
+    "note": "제주 물허벅 생활사 사진",
+    "width": 400,
+    "height": 384,
+    "status": "ok"
+  },
+  {
+    "key": "spring_well_jejusori",
+    "file": "spring_well_jejusori.jpg",
+    "url": "https://cdn.jejusori.net/news/photo/201901/214130_249768_5751.jpg",
+    "final_url": "https://cdn.jejusori.net/news/photo/201901/214130_249768_5751.jpg",
+    "source": "https://www.jejusori.net/news/articleView.html?idxno=214130",
+    "note": "제주의 옛 물자리·샘 사진",
+    "width": 600,
+    "height": 450,
+    "status": "ok"
+  },
+  {
+    "key": "stone_wall_commons",
+    "file": "stone_wall_commons.jpg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jeju%20traditional%20stone%20walls%20woljeongri%20jeju%20korea.jpg",
+    "final_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Jeju_traditional_stone_walls_woljeongri_jeju_korea.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Jeju_traditional_stone_walls_woljeongri_jeju_korea.jpg",
+    "note": "제주 전통 돌담, CC BY-SA 4.0",
+    "width": 4032,
+    "height": 3024,
+    "status": "ok"
+  },
+  {
+    "key": "hanji_artisan_commons",
+    "file": "hanji_artisan_commons.jpg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%ED%95%9C%EC%A7%80%EC%9E%A5.jpg",
+    "final_url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/%ED%95%9C%EC%A7%80%EC%9E%A5.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:%ED%95%9C%EC%A7%80%EC%9E%A5.jpg",
+    "note": "한지 뜨기 장인, CC BY-SA 2.5",
+    "width": 533,
+    "height": 800,
+    "status": "ok"
+  },
+  {
+    "key": "hanji_sheet_commons",
+    "file": "hanji_sheet_commons.jpg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Korean%20paper-Hanji-02.jpg",
+    "final_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Korean_paper-Hanji-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "source": "https://commons.wikimedia.org/wiki/File:Korean_paper-Hanji-02.jpg",
+    "note": "한지 완성지, public domain",
+    "width": 1600,
+    "height": 1200,
+    "status": "ok"
+  },
+  {
+    "key": "galot_actual",
+    "file": "galot_actual.jpg",
+    "url": "https://img1.yna.co.kr/etc/inner/KR/2023/08/04/AKR20230804106700056_10_i_P4.jpg",
+    "final_url": "https://img1.yna.co.kr/etc/inner/KR/2023/08/04/AKR20230804106700056_10_i_P4.jpg",
+    "source": "https://www.yna.co.kr/view/AKR20230804106700056",
+    "note": "제주 갈옷 실제 사진, 교정용",
+    "width": 1024,
+    "height": 827,
+    "status": "ok"
+  },
+  {
+    "key": "persimmon_crushing",
+    "file": "persimmon_crushing.jpg",
+    "url": "https://img0.yna.co.kr/etc/inner/KR/2023/08/04/AKR20230804106700056_11_i_P4.jpg",
+    "final_url": "https://img0.yna.co.kr/etc/inner/KR/2023/08/04/AKR20230804106700056_11_i_P4.jpg",
+    "source": "https://www.yna.co.kr/view/AKR20230804106700056",
+    "note": "풋감 부수는 작업, 교정용",
+    "width": 1024,
+    "height": 698,
+    "status": "ok"
+  },
+  {
+    "key": "galcheon_drying",
+    "file": "galcheon_drying.jpg",
+    "url": "https://img9.yna.co.kr/etc/inner/KR/2023/08/04/AKR20230804106700056_05_i_P4.jpg",
+    "final_url": "https://img9.yna.co.kr/etc/inner/KR/2023/08/04/AKR20230804106700056_05_i_P4.jpg",
+    "source": "https://www.yna.co.kr/view/AKR20230804106700056",
+    "note": "갈천 말리는 모습, 교정용",
+    "width": 804,
+    "height": 1024,
+    "status": "ok"
+  },
+  {
+    "key": "galot_drying",
+    "file": "galot_drying.jpg",
+    "url": "https://img1.yna.co.kr/photo/yna/YH/2016/02/02/PYH2016020216260005600_P4.jpg",
+    "final_url": "https://img1.yna.co.kr/photo/yna/YH/2016/02/02/PYH2016020216260005600_P4.jpg",
+    "source": "https://www.yna.co.kr/view/AKR20230804106700056",
+    "note": "건조되는 갈옷, 교정용",
+    "width": 1024,
+    "height": 682,
+    "status": "ok"
+  }
+]
