@@ -7,26 +7,29 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - uses: actions/checkout@v4
       - name: Install
         run: |
           python -m pip install --upgrade pip
           pip install requests pillow
       - name: Fetch
         run: |
+          rm -rf public/geumseong-v10-refs
+          mkdir -p public/geumseong-v10-refs
           cat > /tmp/fetch.py <<'PY'
-          import io, json, os
+          import io, json
           from pathlib import Path
           import requests
           from PIL import Image
 
-          out=Path('v10_refs'); out.mkdir(exist_ok=True)
+          out=Path('public/geumseong-v10-refs')
           s=requests.Session(); s.headers.update({'User-Agent':'Mozilla/5.0 Chrome/125 Safari/537.36'})
           items={
             'stonewall_ccby_sa':'https://commons.wikimedia.org/wiki/Special:Redirect/file/Jeju%20traditional%20stone%20walls%20woljeongri%20jeju%20korea.jpg',
@@ -52,14 +55,15 @@ jobs:
               print('FAIL',key,repr(e))
           (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
           ok=sum(x['status']=='ok' for x in manifest)
-          print('OK COUNT',ok)
+          (out/'STATUS.txt').write_text(f'OK={ok}\nTOTAL={len(manifest)}\n',encoding='utf-8')
           if ok < 6: raise SystemExit('too few downloaded refs')
           PY
           python /tmp/fetch.py
-      - name: Upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: geumseong-v10-refs
-          path: v10_refs
-          retention-days: 7
-          if-no-files-found: error
+      - name: Commit references
+        run: |
+          git config user.name 'geumseong-archive-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add public/geumseong-v10-refs
+          git diff --cached --quiet && exit 0
+          git commit -m 'Add Geumseong v10 visual references'
+          git push
