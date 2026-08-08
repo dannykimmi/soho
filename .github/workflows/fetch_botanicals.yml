@@ -1,0 +1,40 @@
+name: Fetch Botanical References
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fetch_botanicals.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download public-domain botanical illustrations
+        run: |
+          mkdir -p public/geumseong-botanicals
+          curl -L --fail --retry 3 -A 'Mozilla/5.0' 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Illustration_Hordeum_vulgare0B.jpg' -o public/geumseong-botanicals/barley.jpg
+          curl -L --fail --retry 3 -A 'Mozilla/5.0' 'https://upload.wikimedia.org/wikipedia/commons/2/25/Fagopyrum_esculentum_Sturm64.jpg' -o public/geumseong-botanicals/buckwheat.jpg
+          curl -L --fail --retry 3 -A 'Mozilla/5.0' 'https://upload.wikimedia.org/wikipedia/commons/6/6a/EB1911_-_Rice.png' -o public/geumseong-botanicals/rice.png
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          for p in Path('public/geumseong-botanicals').iterdir():
+              im=Image.open(p)
+              print(p, im.size, im.mode)
+          PY
+
+      - name: Commit downloaded references
+        run: |
+          git config user.name 'geumseong-archive-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add public/geumseong-botanicals
+          git diff --cached --quiet && exit 0
+          git commit -m 'Add public-domain botanical references for Geumseong archive'
+          git push
