@@ -1,0 +1,60 @@
+name: Package Geumseong v10 final references
+
+on:
+  push:
+    paths:
+      - '.github/workflows/package_geumseong_v10_final_refs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download public-domain botanical plates
+        run: |
+          mkdir -p final_refs/botanicals final_refs/source_refs public/geumseong-v10-final
+          cp -a public/geumseong-v10-refs/. final_refs/source_refs/
+          curl -L --fail --retry 4 -A 'Mozilla/5.0' 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Illustration%20Hordeum%20vulgare0B.jpg' -o final_refs/botanicals/barley.jpg
+          curl -L --fail --retry 4 -A 'Mozilla/5.0' 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Fagopyrum%20esculentum%20Sturm64.jpg' -o final_refs/botanicals/buckwheat.jpg
+          curl -L --fail --retry 4 -A 'Mozilla/5.0' 'https://commons.wikimedia.org/wiki/Special:Redirect/file/EB1911%20-%20Rice.png' -o final_refs/botanicals/rice.png
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          for p in Path('final_refs').rglob('*'):
+              if p.is_file() and p.suffix.lower() in {'.jpg','.jpeg','.png'}:
+                  im=Image.open(p); im.verify(); print(p, im.size)
+          PY
+          cat > final_refs/SOURCES.txt <<'EOF'
+          barley.jpg - Illustration Hordeum vulgare0B.jpg, public domain, Wikimedia Commons
+          buckwheat.jpg - Fagopyrum esculentum Sturm64.jpg, public domain, Wikimedia Commons
+          rice.png - EB1911 - Rice.png, public domain, Wikimedia Commons
+          source_refs/* - previously collected source/reference photographs; see source_refs/manifest.json
+          EOF
+          echo "$GITHUB_RUN_ID" > public/geumseong-v10-final/RUN_ID.txt
+
+      - name: Commit run id and botanical references
+        run: |
+          mkdir -p public/geumseong-v10-final/botanicals
+          cp final_refs/botanicals/* public/geumseong-v10-final/botanicals/
+          cp final_refs/SOURCES.txt public/geumseong-v10-final/SOURCES.txt
+          git config user.name 'geumseong-archive-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add public/geumseong-v10-final
+          git diff --cached --quiet || (git commit -m 'Package final Geumseong visual references' && git push)
+
+      - name: Upload reference package
+        uses: actions/upload-artifact@v4
+        with:
+          name: geumseong-v10-final-refs
+          path: final_refs
+          retention-days: 7
+          if-no-files-found: error
