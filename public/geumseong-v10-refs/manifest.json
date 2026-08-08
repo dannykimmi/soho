@@ -1,0 +1,74 @@
+[
+  {
+    "key": "stonewall_ccby_sa",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jeju%20traditional%20stone%20walls%20woljeongri%20jeju%20korea.jpg",
+    "final_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Jeju_traditional_stone_walls_woljeongri_jeju_korea.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "width": 4032,
+    "height": 3024,
+    "status": "ok"
+  },
+  {
+    "key": "hanji_photo_ccby_sa",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Korean%20paper-Hanji-01.jpg",
+    "final_url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Korean_paper-Hanji-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "width": 800,
+    "height": 600,
+    "status": "ok"
+  },
+  {
+    "key": "hanji_art_ccby_sa",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Korean%20paper-Hanji-02.jpg",
+    "final_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Korean_paper-Hanji-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "width": 1600,
+    "height": 1200,
+    "status": "ok"
+  },
+  {
+    "key": "water_spring_visitkorea",
+    "url": "https://tong.visitkorea.or.kr/cms/resource/63/2740563_image2_1.jpg",
+    "final_url": "https://tong.visitkorea.or.kr/cms/resource/63/2740563_image2_1.jpg",
+    "width": 940,
+    "height": 529,
+    "status": "ok"
+  },
+  {
+    "key": "water_fetching_archive",
+    "url": "https://img9.yna.co.kr/photo/yna/YH/2009/01/07/PYH2009010704230005600_P4.jpg",
+    "final_url": "https://img9.yna.co.kr/photo/yna/YH/2009/01/07/PYH2009010704230005600_P4.jpg",
+    "width": 1024,
+    "height": 772,
+    "status": "ok"
+  },
+  {
+    "key": "water_jar_archive",
+    "url": "https://img9.yna.co.kr/photo/yna/YH/2009/01/07/PYH2009010704120005600_P4.jpg",
+    "final_url": "https://img9.yna.co.kr/photo/yna/YH/2009/01/07/PYH2009010704120005600_P4.jpg",
+    "width": 1024,
+    "height": 664,
+    "status": "ok"
+  },
+  {
+    "key": "galot_exhibit",
+    "url": "https://img9.yna.co.kr/etc/inner/KR/2023/08/07/AKR20230807063900054_01_i_P4.jpg",
+    "final_url": "https://img9.yna.co.kr/etc/inner/KR/2023/08/07/AKR20230807063900054_01_i_P4.jpg",
+    "width": 1024,
+    "height": 679,
+    "status": "ok"
+  },
+  {
+    "key": "hanji_tools",
+    "url": "https://img3.yna.co.kr/etc/inner/KR/2022/05/27/AKR20220527032100063_01_i_P4.jpg",
+    "final_url": "https://img3.yna.co.kr/etc/inner/KR/2022/05/27/AKR20220527032100063_01_i_P4.jpg",
+    "width": 1024,
+    "height": 768,
+    "status": "ok"
+  },
+  {
+    "key": "hanji_training",
+    "url": "https://img0.yna.co.kr/etc/inner/KR/2023/03/22/AKR20230322053000055_01_i_P4.jpg",
+    "final_url": "https://img0.yna.co.kr/etc/inner/KR/2023/03/22/AKR20230322053000055_01_i_P4.jpg",
+    "width": 1024,
+    "height": 768,
+    "status": "ok"
+  }
+]
