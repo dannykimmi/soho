@@ -1,0 +1,25 @@
+name: Export Geumseong Assets on PR
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify assets
+        run: |
+          test -f public/geumseong-assets/manifest.json
+          find public/geumseong-assets -maxdepth 1 -type f -printf '%f %s bytes\n' | sort
+      - name: Upload asset bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: geumseong-assets-export
+          path: public/geumseong-assets
+          retention-days: 7
+          if-no-files-found: error
