@@ -1,0 +1,31 @@
+name: Fetch public-domain persimmon watercolor
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fetch_persimmon_pd.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download image
+        run: |
+          mkdir -p public/geumseong-v11-assets
+          curl -L --fail --retry 4 -A 'Mozilla/5.0' 'https://upload.wikimedia.org/wikipedia/commons/1/11/PersimmonWatercolor.jpg' -o public/geumseong-v11-assets/persimmon_watercolor_pd.jpg
+          python - <<'PY'
+          from PIL import Image
+          p='public/geumseong-v11-assets/persimmon_watercolor_pd.jpg'
+          im=Image.open(p); im.verify(); print(im.size)
+          PY
+      - name: Commit image
+        run: |
+          git config user.name 'geumseong-archive-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add public/geumseong-v11-assets/persimmon_watercolor_pd.jpg
+          git diff --cached --quiet || (git commit -m 'Add public-domain persimmon watercolor for Geumseong archive' && git push)
