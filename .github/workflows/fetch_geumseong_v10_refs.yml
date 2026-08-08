@@ -1,0 +1,65 @@
+name: Fetch Geumseong v10 references
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fetch_geumseong_v10_refs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pillow
+      - name: Fetch
+        run: |
+          cat > /tmp/fetch.py <<'PY'
+          import io, json, os
+          from pathlib import Path
+          import requests
+          from PIL import Image
+
+          out=Path('v10_refs'); out.mkdir(exist_ok=True)
+          s=requests.Session(); s.headers.update({'User-Agent':'Mozilla/5.0 Chrome/125 Safari/537.36'})
+          items={
+            'stonewall_ccby_sa':'https://commons.wikimedia.org/wiki/Special:Redirect/file/Jeju%20traditional%20stone%20walls%20woljeongri%20jeju%20korea.jpg',
+            'hanji_photo_ccby_sa':'https://commons.wikimedia.org/wiki/Special:Redirect/file/Korean%20paper-Hanji-01.jpg',
+            'hanji_art_ccby_sa':'https://commons.wikimedia.org/wiki/Special:Redirect/file/Korean%20paper-Hanji-02.jpg',
+            'water_spring_visitkorea':'https://tong.visitkorea.or.kr/cms/resource/63/2740563_image2_1.jpg',
+            'water_fetching_archive':'https://img9.yna.co.kr/photo/yna/YH/2009/01/07/PYH2009010704230005600_P4.jpg',
+            'water_jar_archive':'https://img9.yna.co.kr/photo/yna/YH/2009/01/07/PYH2009010704120005600_P4.jpg',
+            'galot_exhibit':'https://img9.yna.co.kr/etc/inner/KR/2023/08/07/AKR20230807063900054_01_i_P4.jpg',
+            'hanji_tools':'https://img3.yna.co.kr/etc/inner/KR/2022/05/27/AKR20220527032100063_01_i_P4.jpg',
+            'hanji_training':'https://img0.yna.co.kr/etc/inner/KR/2023/03/22/AKR20230322053000055_01_i_P4.jpg'
+          }
+          manifest=[]
+          for key,url in items.items():
+            try:
+              r=s.get(url,timeout=90,allow_redirects=True); r.raise_for_status()
+              im=Image.open(io.BytesIO(r.content)); im.load(); im=im.convert('RGB')
+              p=out/f'{key}.jpg'; im.save(p,quality=94,optimize=True,progressive=True)
+              manifest.append({'key':key,'url':url,'final_url':r.url,'width':im.width,'height':im.height,'status':'ok'})
+              print('OK',key,im.size,r.url)
+            except Exception as e:
+              manifest.append({'key':key,'url':url,'status':'failed','error':repr(e)})
+              print('FAIL',key,repr(e))
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          ok=sum(x['status']=='ok' for x in manifest)
+          print('OK COUNT',ok)
+          if ok < 6: raise SystemExit('too few downloaded refs')
+          PY
+          python /tmp/fetch.py
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: geumseong-v10-refs
+          path: v10_refs
+          retention-days: 7
+          if-no-files-found: error
